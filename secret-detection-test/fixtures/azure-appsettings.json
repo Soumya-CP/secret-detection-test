@@ -1,0 +1,8 @@
+{
+  "AzureAd": {
+    "TenantId": "00000000-0000-0000-0000-000000000000",
+    "ClientId": "11111111-1111-1111-1111-111111111111",
+    "ClientSecret": "aB3dE5fG7hJ9kL2mN4pQ6rS8tU0vW1xY3zAaB3dE"
+  },
+  "_fixture_marker": "TESTCASE: SD-003 Azure client secret in application settings format"
+}

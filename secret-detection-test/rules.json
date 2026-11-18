@@ -1,0 +1,158 @@
+[
+  {
+    "id": "SD-001",
+    "name": "AWS Access Key ID",
+    "severity": "high",
+    "formats": [
+      "dotenv",
+      "AWS shared credentials",
+      "YAML",
+      "JSON"
+    ],
+    "match_guidance": "AKIA/ASIA-style access-key identifier; require key context or known prefix to reduce false positives."
+  },
+  {
+    "id": "SD-002",
+    "name": "AWS Secret Access Key",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "AWS shared credentials"
+    ],
+    "match_guidance": "Secret-key assignment with AWS context and high-entropy 40-character base64-like value; do not flag variable references."
+  },
+  {
+    "id": "SD-003",
+    "name": "Azure Client Secret",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "JSON appsettings",
+      "YAML"
+    ],
+    "match_guidance": "ClientSecret/AZURE_CLIENT_SECRET context with a non-placeholder value."
+  },
+  {
+    "id": "SD-004",
+    "name": "GCP Service Account JSON key",
+    "severity": "critical",
+    "formats": [
+      "JSON"
+    ],
+    "match_guidance": "Service-account object with type=service_account and private_key/private_key_id fields; parse JSON and PEM marker context."
+  },
+  {
+    "id": "SD-005",
+    "name": "Private key material",
+    "severity": "critical",
+    "formats": [
+      "PEM",
+      "RSA PEM",
+      "PKCS8 PEM",
+      "EC PEM",
+      "OpenSSH PEM"
+    ],
+    "match_guidance": "Recognize private-key BEGIN/END labels and plausible encoded body; do not alert on PUBLIC KEY certificates."
+  },
+  {
+    "id": "SD-006",
+    "name": "GitHub classic token",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "YAML",
+      "source code"
+    ],
+    "match_guidance": "ghp_ prefix and expected token-like suffix; ignore documented placeholder strings."
+  },
+  {
+    "id": "SD-007",
+    "name": "GitHub fine-grained token",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "YAML",
+      "source code"
+    ],
+    "match_guidance": "github_pat_ prefix and expected token-like suffix; require token context."
+  },
+  {
+    "id": "SD-008",
+    "name": "GitLab personal/project token",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "YAML",
+      "source code"
+    ],
+    "match_guidance": "glpat- prefix and expected token-like suffix; support other configured GitLab token prefixes where applicable."
+  },
+  {
+    "id": "SD-009",
+    "name": "Slack token",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "YAML",
+      "source code"
+    ],
+    "match_guidance": "Recognize xoxb-/xoxp-/xoxs-/xoxa- token families with plausible structure."
+  },
+  {
+    "id": "SD-010",
+    "name": "Stripe secret key",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "source code"
+    ],
+    "match_guidance": "sk_live_ and restricted-key variants; include test-key prefix variants as a separate lower-severity context if supported."
+  },
+  {
+    "id": "SD-011",
+    "name": "OpenAI API key",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "source code",
+      "JSON"
+    ],
+    "match_guidance": "Recognize current sk-proj-/sk-svcacct- formats and legacy sk- patterns while excluding known examples/placeholders."
+  },
+  {
+    "id": "SD-012",
+    "name": "Anthropic API key",
+    "severity": "critical",
+    "formats": [
+      "dotenv",
+      "source code",
+      "JSON"
+    ],
+    "match_guidance": "Recognize sk-ant- family and plausible suffix; ignore obvious synthetic placeholders if configured as allowlisted."
+  },
+  {
+    "id": "SD-013",
+    "name": "JSON Web Token (JWT)",
+    "severity": "high",
+    "formats": [
+      "source code",
+      "JSON",
+      "YAML",
+      "logs"
+    ],
+    "match_guidance": "Parse three base64url segments; validate header/payload JSON and report only token-shaped values in sensitive contexts."
+  },
+  {
+    "id": "SD-014",
+    "name": "Hardcoded password",
+    "severity": "high",
+    "formats": [
+      "dotenv",
+      "JSON",
+      "YAML",
+      "source code",
+      "INI"
+    ],
+    "match_guidance": "Password/secret assignments with literal non-placeholder values; suppress examples, empty strings, environment references, and common placeholders."
+  }
+]

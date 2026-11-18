@@ -1,0 +1,7 @@
+service:
+  # TESTCASE: SD-014 Hardcoded password in YAML config (synthetic)
+  password: "not-a-real-password-OnlyForScannerTest!"
+  database:
+    username: app_user
+    # TESTCASE: SD-014 Hardcoded password in nested database config (synthetic)
+    password: "FakeDbPass_123456!"

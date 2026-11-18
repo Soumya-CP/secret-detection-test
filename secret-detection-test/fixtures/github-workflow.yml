@@ -1,0 +1,13 @@
+name: synthetic-secret-fixture
+on: [push]
+jobs:
+  scan-fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Example only
+        env:
+          # TESTCASE: SD-006 GitHub classic personal access token (synthetic)
+          GH_CLASSIC_TOKEN: ghp_aB3dE5fG7hJ9kL2mN4pQ6rS8tU0vW1xY3zAa
+          # TESTCASE: SD-007 GitHub fine-grained personal access token (synthetic)
+          GH_FINE_GRAINED_TOKEN: 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
+        run: echo "fixture only"
